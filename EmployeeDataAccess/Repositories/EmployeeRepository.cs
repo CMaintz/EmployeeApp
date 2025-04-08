@@ -1,5 +1,5 @@
 ﻿using DTO.Model;
-using EmployeeDataAccess.Context;
+using EmployeeDataAccess.Contexts;
 using EmployeeDataAccess.Mappers;
 using EmployeeDataAccess.Model;
 using System;
@@ -22,7 +22,7 @@ namespace EmployeeDataAccess.Repositories
                 return EmployeeMapper.Map(context.Employees.Find(id));
             }
         }
-        public static void AddEmployee(DTO.Model.Employee employee)
+        public static void addEmployee(DTO.Model.Employee employee)
         {
             using (EmployeeContext context = new EmployeeContext())
             {

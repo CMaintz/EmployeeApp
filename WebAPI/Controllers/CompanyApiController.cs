@@ -10,27 +10,27 @@ using System.Web.Http.Cors;
 
 namespace WebAPI.Controllers
 {
-    public class EmployeeApiController : ApiController
+    public class CompanyApiController : ApiController
     {
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Employee GetEmployee(int id)
+        public Company GetCompany(int id)
         {
-            EmployeeBLL bll = new EmployeeBLL();
-            return bll.getEmployee(id);
+            CompanyBLL bll = new CompanyBLL();
+            return bll.getCompany(id);
         }
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public Employee GetEmployeeOne()
+        public Company GetCompanyOne()
         {
-            EmployeeBLL bll = new EmployeeBLL();
-            return bll.getEmployee(1);
+            CompanyBLL bll = new CompanyBLL();
+            return bll.getCompany(1);
         }
         [HttpPost]
-        public void AddEmployee([FromBody]Employee emp)
+        public void AddCompany([FromBody] Company com)
         {
-            EmployeeBLL bll = new EmployeeBLL();
-            bll.addEmployee(emp);
+            CompanyBLL bll = new CompanyBLL();
+            bll.addCompany(com);
         }
     }
 }

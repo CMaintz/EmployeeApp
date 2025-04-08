@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EmployeeDataAccess.Model;
 
-namespace EmployeeDataAccess.Context
+namespace EmployeeDataAccess.Contexts
 {
     internal class EmployeeInitializer : CreateDatabaseIfNotExists<EmployeeContext>
     {

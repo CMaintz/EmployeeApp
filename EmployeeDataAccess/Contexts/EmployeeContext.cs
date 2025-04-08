@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeDataAccess.Context
+namespace EmployeeDataAccess.Contexts
 {
     internal class EmployeeContext : DbContext
     {

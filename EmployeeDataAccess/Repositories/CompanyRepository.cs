@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO.Model;
-using EmployeeDataAccess.Context;
+using EmployeeDataAccess.Contexts;
 using EmployeeDataAccess.Mappers;
 using EmployeeDataAccess.Model;
 
@@ -56,8 +56,7 @@ namespace EmployeeDataAccess.Repositories
                 if (company != null && employee != null)
                 {
                     company.Employees.Add(employee);
-                   // employee.Company = company; //dunno if needed
-                    employee.CompanyId = companyId;//dunno if needed
+                    employee.CompanyId = companyId;
                     context.SaveChanges();
                 }
             }
