@@ -38,6 +38,11 @@ namespace BusinessLogic.BLL
         {
             //TODO
         }
+
+        public List<Company> getAllCompanies()
+        {
+            return CompanyRepository.getAllCompanies();
+        }
     }
 
 }

@@ -169,6 +169,8 @@
     <Content Include="Views\Employee\EmployeeAdded.cshtml" />
     <Content Include="Views\Company\Company.cshtml" />
     <Content Include="Views\Company\CompanyAdded.cshtml" />
+    <Content Include="Views\Home\ShowCompany.cshtml" />
+    <Content Include="Views\Home\ShowEmployee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

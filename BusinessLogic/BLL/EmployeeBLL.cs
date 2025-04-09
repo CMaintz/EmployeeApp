@@ -16,6 +16,11 @@ namespace BusinessLogic.BLL
             if (id < 0) throw new IndexOutOfRangeException();
             return EmployeeRepository.getEmployee(id);
         }
+
+        public List<Employee> getAllEmployees()
+        {
+            return EmployeeRepository.getAllEmployees();
+        }
         public void addEmployee(Employee employee)
         {
             //TODO: valider employee?

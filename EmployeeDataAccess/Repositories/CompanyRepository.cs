@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using DTO.Model;
@@ -69,9 +70,24 @@ namespace EmployeeDataAccess.Repositories
                 foreach (DTO.Model.Employee employee in employees)
                 {
                     Model.Employee e = context.Employees.Find(employee.EmployeeId);
+                    employee.CompanyId = companyId;
+                    e.CompanyId = companyId;
                     company.Employees.Add(e);
                 }
                 context.SaveChanges();
+            }
+        }
+        public static List<DTO.Model.Company> getAllCompanies()
+        {
+            using (var context = new EmployeeContext()) {
+                List<DTO.Model.Company> companies = context.Companies.Select(c => CompanyMapper.Map(c)).ToList();
+
+             /*   foreach (var company in context.Companies)
+                {
+                    companies.Add(CompanyMapper.Map(company));
+                }*/
+                // return context.Companies.Select(c => CompanyMapper.Map(c)).ToList();
+                return companies;
             }
         }
     }
