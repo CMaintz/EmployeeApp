@@ -1,0 +1,23 @@
+﻿<Window x:Class="EmployeeWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="mainGrid">
+        <Button x:Name="btnGetEmployee" Content="Get Employee" HorizontalAlignment="Left" Margin="706,37,0,0" VerticalAlignment="Top" Click="GetEmployeeByID"/>
+        <TextBlock x:Name="txtBlkEmployeeDetails" HorizontalAlignment="Left" Margin="636,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Height="123"/>
+        <TextBox x:Name="searchFieldEmployee" HorizontalAlignment="Left" Margin="636,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Search by Employee ID" HorizontalAlignment="Left" Margin="636,11,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="searchFieldCompany" HorizontalAlignment="Left" Margin="4,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>
+        <Label Content="Search by Company ID" HorizontalAlignment="Left" Margin="0,2,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnGetCompany" Content="Get Company" HorizontalAlignment="Left" Margin="65,28,0,0" VerticalAlignment="Top" Click="GetCompanyByID"/>
+        <ListBox x:Name="listBoxCompanyEmployees" ItemsSource="{Binding CompanyEmployees}" SelectedItem="{Binding SelectedEmployee, Mode=TwoWay}" DisplayMemberPath="Name" Margin="4,123,629,4"/>
+        <TextBlock x:Name="txtBlkCompanyDetails" HorizontalAlignment="Left" Margin="4,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" Width="167" Text="Company Details"/>
+        <Label x:Name="lblClickedEmployeeDeets" Content="Employee Details" HorizontalAlignment="Left" Margin="169,120,0,0" VerticalAlignment="Top" Visibility="Visible"/>
+        <TextBlock x:Name="txtBlkClickedEmployee" HorizontalAlignment="Left" Margin="175,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="179" Width="201" Text="{Binding SelectedEmployee.DisplayDetails}"/>
+
+    </Grid>
+</Window>

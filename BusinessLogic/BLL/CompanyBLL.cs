@@ -10,19 +10,38 @@ namespace BusinessLogic.BLL
 {
     public class CompanyBLL
     {
-        public void AddEmployeeToCompany(Employee employeeDTO, int companyId)
+        public void addEmployeeToCompany(int companyId, Employee employee)
         {
-            CompanyRepository.addEmployeeToCompany(companyId, employeeDTO.EmployeeId);
+            CompanyRepository.addEmployeeToCompany(companyId, employee.EmployeeId);
         }
 
         // Få alle medarbejdere for en virksomhed (DTO version)
-        public List<Employee> GetEmployeesByCompany(int companyId)
+        public List<Employee> getEmployeesByCompany(int companyId)
         {
             return CompanyRepository.getCompanyEmployees(companyId);
         }
-        public Company GetCompany(int companyId)
+
+        public Company getCompany(int companyId)
         {
             return CompanyRepository.getCompany(companyId);
+        }
+
+        public void addCompany(Company company) {
+            CompanyRepository.addCompany(company);
+        }
+
+        public void deleteCompany(Company company)
+        {
+            //TODO
+        }
+        public void editCompany(Company company)
+        {
+            //TODO
+        }
+
+        public List<Company> getAllCompanies()
+        {
+            return CompanyRepository.getAllCompanies();
         }
     }
 

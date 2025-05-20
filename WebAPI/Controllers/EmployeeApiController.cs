@@ -1,4 +1,4 @@
-﻿using BLL.Employees;
+﻿using BusinessLogic.BLL;
 using DTO.Model;
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
         public void AddEmployee([FromBody]Employee emp)
         {
             EmployeeBLL bll = new EmployeeBLL();
-            bll.AddEmployee(emp);
+            bll.addEmployee(emp);
         }
     }
 }

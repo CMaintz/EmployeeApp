@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Employees
+namespace BusinessLogic.BLL
 {
     public class EmployeeBLL
     {
@@ -16,14 +16,24 @@ namespace BLL.Employees
             if (id < 0) throw new IndexOutOfRangeException();
             return EmployeeRepository.getEmployee(id);
         }
-        public void AddEmployee(Employee employee)
+
+        public List<Employee> getAllEmployees()
+        {
+            return EmployeeRepository.getAllEmployees();
+        }
+        public void addEmployee(Employee employee)
         {
             //TODO: valider employee?
-            EmployeeRepository.AddEmployee(employee);
+            EmployeeRepository.addEmployee(employee);
         }
-        public void EditEmployee(Employee employee)
+        public void editEmployee(Employee employee)
         {
+            //TODO
+        }
 
+        public void deleteCompany(Company company)
+        {
+            //TODO
         }
 
     }

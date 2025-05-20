@@ -1,4 +1,4 @@
-﻿using BLL.Employees;
+﻿using BusinessLogic.BLL;
 using DTO.Model;
 using System;
 using System.Collections.Generic;
@@ -31,8 +31,8 @@ namespace WebGUI.Controllers
             else if (ModelState.IsValid)
             {
                 EmployeeBLL employeeBLL = new EmployeeBLL();
-                employeeBLL.AddEmployee(employee);
-                return View("EmployeeAdded");
+                employeeBLL.addEmployee(employee);
+                return View("EmployeeAdded", employee);
             } else
             {
                 return View("Employee");

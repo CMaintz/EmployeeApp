@@ -10,8 +10,7 @@ namespace DTO.Model
     {
         public int CompanyId { get; set; }
         public string Name { get; set; }
-
-        public List<Employee> Employees { get; set; } = new List<Employee>();
+        public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 
         public Company() { }
 
@@ -20,6 +19,12 @@ namespace DTO.Model
             CompanyId = companyId;
             Name = name;
             Employees = employees;
+        }
+
+        public String DisplayDetails()
+        {
+           return $"Name: {Name} (ID: {CompanyId})" +
+                    $"\nHeadcount: {Employees.Count}";
         }
     }
 

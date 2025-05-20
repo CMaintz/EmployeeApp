@@ -11,7 +11,7 @@ namespace EmployeeDataAccess.Model
         public int EmployeeId { get; set; }
         public string Name { get; set; }
         public int CompanyId { get; set; }
-        //public virtual Company Company { get; set; } // Dette er den navigation property, EF forventer
+
         public int YearsEmployed { get; set; }
 
 
