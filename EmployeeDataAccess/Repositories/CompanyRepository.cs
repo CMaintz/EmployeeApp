@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -25,7 +26,7 @@ namespace EmployeeDataAccess.Repositories
         {
             using (EmployeeContext context = new EmployeeContext())
             {
-                return CompanyMapper.Map(context.Companies.Find(id)).Employees;
+                return (List<DTO.Model.Employee>)CompanyMapper.Map(context.Companies.Find(id)).Employees;
             }
         }
 
@@ -44,7 +45,15 @@ namespace EmployeeDataAccess.Repositories
         {
             using (EmployeeContext context = new EmployeeContext())
             {
-              //  Company company = context.Companies.Find(c => c.CompanyId == companyId);
+                //  Company company = context.Companies.Find(c => c.CompanyId == companyId);
+                var company = context.Companies.Include("Employees").FirstOrDefault(c => c.CompanyId == companyId);
+
+                if (company != null && employee != null)
+                {
+                    company.Employees.Add(EmployeeMapper.Map(employee));
+                    employee.CompanyId = companyId;
+                    context.SaveChanges();
+                }
             }
         }
         public static void addEmployeeToCompany(int companyId, int employeeId)
@@ -66,7 +75,9 @@ namespace EmployeeDataAccess.Repositories
         {
             using (EmployeeContext context = new EmployeeContext())
             {
-                Model.Company company = context.Companies.Where(c => c.CompanyId == companyId).FirstOrDefault();
+                //   Model.Company company = context.Companies.Where(c => c.CompanyId == companyId).FirstOrDefault();
+                //   Model.Company company = context.Companies.Where(c => c.CompanyId == companyId).Include(c => c.Employees).FirstOrDefault(c => c.CompanyId == companyId);
+                Model.Company company = context.Companies.Include(c => c.Employees).FirstOrDefault(c => c.CompanyId == companyId);
                 foreach (DTO.Model.Employee employee in employees)
                 {
                     Model.Employee e = context.Employees.Find(employee.EmployeeId);
@@ -80,14 +91,15 @@ namespace EmployeeDataAccess.Repositories
         public static List<DTO.Model.Company> getAllCompanies()
         {
             using (var context = new EmployeeContext()) {
-                List<DTO.Model.Company> companies = context.Companies.Select(c => CompanyMapper.Map(c)).ToList();
 
-             /*   foreach (var company in context.Companies)
+                List<Model.Company> tempList = context.Companies.ToList();
+                List<DTO.Model.Company> toReturn = new List<DTO.Model.Company>();
+
+                foreach (Model.Company c in tempList)
                 {
-                    companies.Add(CompanyMapper.Map(company));
-                }*/
-                // return context.Companies.Select(c => CompanyMapper.Map(c)).ToList();
-                return companies;
+                    toReturn.Add(CompanyMapper.Map(c));
+                }
+                return toReturn;
             }
         }
     }

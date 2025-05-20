@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLogic.BLL;
+using WebGUI.ViewModel;
 
 namespace WebGUI.Controllers
 {
@@ -12,25 +13,29 @@ namespace WebGUI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            /*   EmployeeBLL employeeBLL= new EmployeeBLL();
+              EmployeeBLL employeeBLL= new EmployeeBLL();
                CompanyBLL companyBLL = new CompanyBLL();
-               ViewBag.Employees = employeeBLL.getAllEmployees();
-               ViewBag.Companies = companyBLL.getAllCompanies();
-
-             @model List<DTO.Model.Employee>
-
-   @foreach (var p in Model)
-   {
-       @Html.Action("ShowEmployee", "Home", p)
-   }
-
-   @model List<DTO.Model.Company>
-
-   @foreach (var p in Model)
-   {
-       @Html.Action("ShowCompany", "Home", p)
-   }*/
-            return View();
+     
+            var model = new HomeViewModel
+            {
+                Employees = employeeBLL.getAllEmployees(),
+                Companies = companyBLL.getAllCompanies()
+            };
+            return View(model);
         }
+
+        [ChildActionOnly]
+        public ActionResult ShowEmployee(DTO.Model.Employee employee)
+        {
+            return PartialView(employee);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ShowCompany(DTO.Model.Company company)
+        {
+            return PartialView(company);
+        }
+
     }
+
 }

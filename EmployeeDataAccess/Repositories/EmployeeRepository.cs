@@ -35,14 +35,14 @@ namespace EmployeeDataAccess.Repositories
         {
             using (EmployeeContext context = new EmployeeContext())
             {
-                List<DTO.Model.Employee> employees = context.Employees.Select(e => EmployeeMapper.Map(e)).ToList();
-
-                /*foreach (var employee in context.Employees)
+                List<Model.Employee> tempList = context.Employees.ToList();
+                List<DTO.Model.Employee> toReturn = new List<DTO.Model.Employee>();
+                foreach (Model.Employee employee in tempList)
                 {
-                    employees.Add(EmployeeMapper.Map(employee));
-                }*/
-                //return context.Employees.Select(e => EmployeeMapper.Map(e)).ToList();
-                return employees;
+                    toReturn.Add(EmployeeMapper.Map(employee));
+                }
+       
+                return toReturn;
             }
         }
 

@@ -32,7 +32,7 @@ namespace WebGUI.Controllers
             {
                 EmployeeBLL employeeBLL = new EmployeeBLL();
                 employeeBLL.addEmployee(employee);
-                return View("EmployeeAdded");
+                return View("EmployeeAdded", employee);
             } else
             {
                 return View("Employee");
